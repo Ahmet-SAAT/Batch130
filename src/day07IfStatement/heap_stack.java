@@ -28,3 +28,4 @@ public class heap_stack {
         System.out.println(s.equalsIgnoreCase(m));//true cunku degerler ayni
     }
 }
+ 
