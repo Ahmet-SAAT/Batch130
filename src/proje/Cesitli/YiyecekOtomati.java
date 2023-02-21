@@ -1,4 +1,4 @@
-package proje.Çesitli;
+package proje.Cesitli;
 
 import java.util.Scanner;
 

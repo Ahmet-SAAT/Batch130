@@ -1,4 +1,4 @@
-package proje.Çesitli;
+package proje.Cesitli;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
