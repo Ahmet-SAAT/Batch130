@@ -12,19 +12,19 @@ public class Lambda02 {
         //1=LambdaTextFile dosyais icindeki metni konsala yazdiran kodu yaziniz
 
         Files.
-                lines(Paths.get("src/main/java/day37lambda/NTLambda/LambdaTextFile")).
+                lines(Paths.get("src/day37lambda/NTLambda/LambdaTextFile")).
                 forEach(System.out::println);//Satir satir okuyoruz
 
         //2)LambdaTextFile dosyasi icindeki her karakteri uppercase yapiniz.
         Files.
-                lines(Paths.get("src/main/java/day37lambda/NTLambda/LambdaTextFile")).
+                lines(Paths.get("src/day37lambda/NTLambda/LambdaTextFile")).
                 map(String::toUpperCase).
                 forEach(System.out::println);
 
         //3 LambdaTextFile icinde herhangi bir kelimenin olup olmadigina bakiniz.
 
         boolean result = Files.
-                lines(Paths.get("src/main/java/day37lambda/NTLambda/LambdaTextFile")).
+                lines(Paths.get("src/day37lambda/NTLambda/LambdaTextFile")).
                 map(t -> t.split(" ")).
                 flatMap(Arrays::stream).//Arrayleri kirip streama cevirir.
                         anyMatch(t -> t.contains("Java"));//herhangi bir elemanla eşleşme durumunda true dönecektir.
@@ -33,7 +33,7 @@ public class Lambda02 {
 //4texteki her kelimenin "a" icerim icermedi
 
         boolean result2 = Files.
-                lines(Paths.get("src/main/java/day37lambda/NTLambda/LambdaTextFile")).
+                lines(Paths.get("src/day37lambda/NTLambda/LambdaTextFile")).
                 map(t -> t.split(" ")).
                 flatMap(Arrays::stream).//Arrayleri kirip streama cevirir.
                         allMatch(t -> t.contains("a"));//Her elemanin eşleşme durumunda true dönecektir.
@@ -41,7 +41,7 @@ public class Lambda02 {
 
 //Texteki hicbir kelimenin x icermedigini gosteren kodu
         boolean result3 = Files.
-                lines(Paths.get("src/main/java/day37lambda/NTLambda/LambdaTextFile")).
+                lines(Paths.get("src/day37lambda/NTLambda/LambdaTextFile")).
                 map(t -> t.split(" ")).
                 flatMap(Arrays::stream).//Arrayleri kirip streama cevirir.
                         noneMatch(t -> t.contains("x"));//Her elemanin eşleşme durumunda true dönecektir.
@@ -51,7 +51,7 @@ public class Lambda02 {
    //texte r ile bitenleri sec
 
       long result4= Files.
-                lines(Paths.get("src/main/java/day37lambda/NTLambda/LambdaTextFile")).
+                lines(Paths.get("src/day37lambda/NTLambda/LambdaTextFile")).
                 map(t -> t.split(" ")).
                 flatMap(Arrays::stream).
                 filter(t->t.endsWith("r")).
@@ -59,7 +59,7 @@ public class Lambda02 {
         System.out.println(result4);
             //2.yol ama tavsiye edilmez
         long result5= Files.
-                lines(Paths.get("src/main/java/day37lambda/NTLambda/LambdaTextFile")).
+                lines(Paths.get("src/day37lambda/NTLambda/LambdaTextFile")).
                 map(t -> t.split(" ")).
                 flatMap(Arrays::stream).
                 filter(t->t.endsWith("r")).
