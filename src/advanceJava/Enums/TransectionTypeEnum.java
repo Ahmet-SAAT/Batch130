@@ -2,7 +2,7 @@ package advanceJava.Enums;
 
 public enum TransectionTypeEnum {
     DEPOSIT(1),
-    WITDRAW(2),
+    WITHDRAW(2),
     TRANSFER(3),
     PAYMENT(4),
     OTHER(5);
