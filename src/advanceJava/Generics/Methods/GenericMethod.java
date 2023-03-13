@@ -63,4 +63,7 @@ public class GenericMethod {
         System.out.println(object);
         System.out.println();
     }
+    public static <S,U> void addObjectToArray(S[] arr,U object){
+      // arr[0]=object;//cte cunku object ve arr data tipi farkli.Object data tipi de S olsa hata vermez
+    }
 }
