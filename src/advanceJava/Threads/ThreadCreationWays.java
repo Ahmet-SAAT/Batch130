@@ -1,5 +1,6 @@
 package advanceJava.Threads;
-
+//Thread bir processin parcasidir.Birden fazla threas kullanidigimizda multithreading
+//yaparak es zamanli gorevler yapabiliriz.Cpu en verimli sekilde kullanilir.
 public class ThreadCreationWays {
     public static void main(String[] args) {
         //ilk calisan thread main threaddir,Gorelim:
@@ -7,6 +8,7 @@ public class ThreadCreationWays {
 
         //Thread classini extends ederek
         MyThread thread1=new MyThread();
+        thread1.run();//run metodu icindeki kodlar cagrilir ama thread olusmaz
         thread1.start();//thread olusturmak istiyorsak method start methodu kullanimalidir.
         //class basa clasi da extend edecekse 2. yontem tercih edilmeli
 
@@ -14,7 +16,7 @@ public class ThreadCreationWays {
         1-Start methodu thread olusturur ve override edilen run methodunu cagirir.
         2-Dogrudan run methodu cagrildiginda method icindeki islemler yapilir ancak thread olusmaz.
         Yani run methodu main thread icinde calisir yeni bir thread olusmaz.
-         3-implementte sinir olmadiginda implemen eden class baska classi extend edecekse bu yontem kullanilmalidir*/
+        3-implementte sinir olmadiginda implemen eden class baska classi extend edecekse bu yontem kullanilmalidir*/
 
 
 
@@ -71,9 +73,8 @@ class MyThread extends Thread {
 
 //2.YOL Runnable interfaceini implements etmek
 class MyRunnable implements Runnable{
-
     @Override
     public void run() {
-        System.out.println("MyRunnable ile oluturdugumuz thread calisiyor");
+        System.out.println("MyRunnable ile olusturdugumuz thread calisiyor");
     }
 }
