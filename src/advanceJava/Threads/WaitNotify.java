@@ -4,17 +4,18 @@ package advanceJava.Threads;
 Bir öğrencinin banka hesabı için para yatırma(deposit) ve çekme işlemleri(withdraw) için uygulama
 Hesapta para yoksa para yatırılması(bakiyenin artması) beklensin.
 Bakiye artınca(yeterli olunca) para çekme gerçekleşsin.
+wait ve notify monitor edilen obje icin cagrilir
 */
 public class WaitNotify {
     public static int balance = 0;
 
     public static void main(String[] args) {
-        WaitNotify waitNotify=new WaitNotify();
+        WaitNotify obj =new WaitNotify();
 
         Thread thread1 = new Thread(new Runnable() {
             @Override
             public void run() {
-                waitNotify.withdraw(1000);
+                obj.withdraw(1000);
 
             }
         });
@@ -24,7 +25,12 @@ public class WaitNotify {
         Thread thread2=new Thread(new Runnable() {
             @Override
             public void run() {
-                waitNotify.deposit(2000);
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    System.out.println(e.getMessage());
+                }
+                obj.deposit(2000);
 
             }
         });
@@ -34,7 +40,6 @@ public class WaitNotify {
 
     }
 
-
     //para cekme icin method
     public synchronized void withdraw(int amaunt) {
         System.out.println(Thread.currentThread().getName() + " Para cekmek istiyor");
@@ -42,7 +47,8 @@ public class WaitNotify {
             System.out.println("Bakiyeniz yetersiz...Mevcut bakiye = " + balance);
             System.out.println("Bakiyenin guncellenmesini bekliyor");
             try {
-                wait();
+                wait(); //object classinin static methodu wait methodu hangi theadd uzerinde ise thread gecici olarak bekler
+                //obje nesnesi gecici serbest birakir
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
             }
@@ -52,6 +58,7 @@ public class WaitNotify {
             System.out.println("Para cekme islemi gereceklesti.Mevcut Bakiye = " + balance);
         } else {
             System.out.println("Bakiye yetersiz...Mevcut bakiye = " + balance);
+            System.out.println("Yarin yine gel");
         }
     }
 
@@ -60,7 +67,9 @@ public class WaitNotify {
         System.out.println(Thread.currentThread().getName() + " Para yatirmak istiyor");
         balance += amaunt;
         System.out.println("Para yatirma islemi basariyla gerceklesti...Bakiye = " + balance);
-        notify();
+        //bakiye guncelleme yapildigi icin diger threade haber gonderirir.
+        notify();//obje serbest birakilmaz
+        System.out.println("Notify metodu cagrilinca hemen kilidi serbest birakmaz methodun bitmesini bekler");
         System.out.println();
 
     }
