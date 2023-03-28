@@ -6,7 +6,7 @@ Buda uygulamayi olumsuz etkiler.Sunucu cevap veremez hale gelir.
 Genellikler icice synchronized block kullanildiginda yasanir.
  */
 //Bu ornekte thread2 de obj1 ile baslarsa sorun cozulebilir.
-public class DeadlockDemo {
+public class DeadlockDemo{
     public static void main(String[] args) {
        String obj1="kahve";
        String obj2="seker";
